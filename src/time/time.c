@@ -15,13 +15,13 @@
 
 #pragma region Private
 
-static const int64_t seconds_per_minute = 60;
-static const int64_t seconds_per_hour = 60 * seconds_per_minute;
-static const int64_t seconds_per_day = 24 * seconds_per_hour;
-static const int64_t seconds_per_week = 7 * seconds_per_day;
-static const int64_t days_per_400_years = 365 * 400 + 97;
-static const int64_t days_per_100_years = 365 * 100 + 24;
-static const int64_t days_per_4_years = 365 * 4 + 1;
+#define seconds_per_minute 60
+#define seconds_per_hour (60 * seconds_per_minute)
+#define seconds_per_day (24 * seconds_per_hour)
+#define seconds_per_week (7 * seconds_per_day)
+#define days_per_400_years (365 * 400 + 97)
+#define days_per_100_years (365 * 100 + 24)
+#define days_per_4_years (365 * 4 + 1)
 
 // The unsigned zero year for internal calculations.
 // Must be 1 mod 400, and times before it will not compute correctly,
@@ -30,12 +30,11 @@ static const int64_t absolute_zero_year = -292277022399LL;
 
 // Offsets to convert between internal and absolute or Unix times.
 // = (absoluteZeroYear - internalYear) * 365.2425 * secondsPerDay
-static const int64_t absolute_to_internal = -9223371966579724800LL;
-static const int64_t internal_to_absolute = -absolute_to_internal;
+#define absolute_to_internal (-9223371966579724800LL)
+#define internal_to_absolute (-absolute_to_internal)
 
-static const int64_t unix_to_internal =
-    (1969 * 365 + 1969 / 4 - 1969 / 100 + 1969 / 400) * seconds_per_day;
-static const int64_t internal_to_unix = -unix_to_internal;
+#define unix_to_internal ((int64_t)((1969LL * 365 + 1969LL / 4 - 1969LL / 100 + 1969LL / 400) * seconds_per_day))
+#define internal_to_unix (-unix_to_internal)
 
 // days_before[m] counts the number of days in a non-leap year
 // before month m begins. There is an entry for m=12, counting
