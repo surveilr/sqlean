@@ -13,11 +13,12 @@
 
 // Common durations.
 const Duration Nanosecond = 1;
-const Duration Microsecond = 1000 * Nanosecond;
-const Duration Millisecond = 1000 * Microsecond;
-const Duration Second = 1000 * Millisecond;
-const Duration Minute = 60 * Second;
-const Duration Hour = 60 * Minute;
+// i had to edit them manually due to msvc complaints
+const Duration Microsecond = 1000 * 1;
+const Duration Millisecond = 1000 * 1000 * 1;
+const Duration Second = 1000 * 1000 * 1000 * 1;
+const Duration Minute = 60 * 1000 * 1000 * 1000 * 1;
+const Duration Hour = 60 * 60 * 1000 * 1000 * 1000 * 1;
 
 #pragma region Conversion
 
